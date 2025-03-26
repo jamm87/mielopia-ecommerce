@@ -56,10 +56,14 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
             : item
         );
         
-        toast.success(`Cantidad actualizada: ${existingItem.product.name}`);
+        toast.success(`Cantidad actualizada: ${existingItem.product.name}`, {
+          duration: 2000
+        });
         return updatedItems;
       } else {
-        toast.success(`Añadido al carrito: ${product.name}`);
+        toast.success(`Añadido al carrito: ${product.name}`, {
+          duration: 2000
+        });
         return [...prevItems, { product, quantity }];
       }
     });
@@ -69,7 +73,9 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setCartItems((prevItems) => {
       const itemToRemove = prevItems.find(item => item.product.id === productId);
       if (itemToRemove) {
-        toast.info(`Eliminado del carrito: ${itemToRemove.product.name}`);
+        toast.info(`Eliminado del carrito: ${itemToRemove.product.name}`, {
+          duration: 2000
+        });
       }
       return prevItems.filter((item) => item.product.id !== productId);
     });
@@ -87,7 +93,9 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const clearCart = () => {
     setCartItems([]);
-    toast.info('Carrito vaciado');
+    toast.info('Carrito vaciado', {
+      duration: 2000
+    });
   };
 
   return (
