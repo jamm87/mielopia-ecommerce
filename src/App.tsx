@@ -10,6 +10,7 @@ import HomePage from "@/pages/HomePage";
 import ProductsPage from "@/pages/ProductsPage";
 import ProductDetailPage from "@/pages/ProductDetailPage";
 import CartPage from "@/pages/CartPage";
+import CheckoutPage from "@/pages/CheckoutPage";
 import AboutPage from "@/pages/AboutPage";
 import ContactPage from "@/pages/ContactPage";
 import NotFound from "@/pages/NotFound";
@@ -33,6 +34,7 @@ const App = () => (
                 <Route path="/productos" element={<ProductsPage />} />
                 <Route path="/producto/:id" element={<ProductDetailPage />} />
                 <Route path="/carrito" element={<CartPage />} />
+                <Route path="/checkout" element={<CheckoutPage />} />
                 <Route path="/nosotros" element={<AboutPage />} />
                 <Route path="/contacto" element={<ContactPage />} />
                 <Route path="*" element={<NotFound />} />

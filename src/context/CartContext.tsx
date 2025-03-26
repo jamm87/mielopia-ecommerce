@@ -24,6 +24,7 @@ type CartContextType = {
   updateQuantity: (productId: string, quantity: number) => void;
   clearCart: () => void;
   subtotal: number;
+  processPayment: (customerInfo: any) => Promise<{ success: boolean, error?: string }>;
 };
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -98,6 +99,25 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     });
   };
 
+  // This function will be connected to Stripe in the future
+  const processPayment = async (customerInfo: any): Promise<{ success: boolean, error?: string }> => {
+    try {
+      // Here we will connect to Stripe API
+      console.log('Processing payment with customer info:', customerInfo);
+      console.log('Cart items:', cartItems);
+      console.log('Total amount:', subtotal);
+      
+      // Mock successful payment for now
+      return { success: true };
+    } catch (error) {
+      console.error('Error processing payment:', error);
+      return { 
+        success: false, 
+        error: error instanceof Error ? error.message : 'Error procesando el pago'
+      };
+    }
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -107,6 +127,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
         updateQuantity,
         clearCart,
         subtotal,
+        processPayment,
       }}
     >
       {children}

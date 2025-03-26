@@ -1,8 +1,7 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Trash2, Plus, Minus, ShoppingCart, ChevronRight } from 'lucide-react';
+import { Trash2, Plus, Minus, ShoppingCart, ChevronRight, CreditCard } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
@@ -155,10 +154,13 @@ const CartPage = () => {
                     </div>
                   </div>
                 </CardContent>
-                <CardFooter className="p-6 pt-0">
-                  <Button className="honey-button w-full group">
-                    Finalizar compra
-                    <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                <CardFooter className="p-6 pt-0 flex flex-col space-y-3">
+                  <Button asChild className="honey-button w-full group">
+                    <Link to="/checkout" className="flex items-center justify-center">
+                      <CreditCard className="mr-2 h-4 w-4" />
+                      Finalizar compra
+                      <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </Link>
                   </Button>
                 </CardFooter>
               </Card>
